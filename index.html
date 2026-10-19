@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="kk" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Негіздері (1-6 Дәрістер) - Онлайн Тест</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        pre, code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100,116,139,0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(100,116,139,0.5);
+        }
+
+        /* Highlighting syntax simulation for C++ */
+        .cpp-kw { color: #f43f5e; font-weight: 600; }
+        .cpp-fn { color: #3b82f6; font-weight: 600; }
+        .cpp-str { color: #10b981; }
+        .cpp-num { color: #f59e0b; }
+        .cpp-pp  { color: #a855f7; font-weight: 600; }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .certificate-card {
+                box-shadow: none !important;
+                border: 2px solid #1e3a8a !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200 flex flex-col">
+
+    <!-- Top Header -->
+    <header class="no-print sticky top-0 z-40 bg-white/90 dark:bg-slate-800/90 backdrop-blur border-b border-slate-200 dark:border-slate-700 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-code text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold bg-gradient-to-r from-brand-700 to-indigo-600 dark:from-brand-400 dark:to-indigo-400 bg-clip-text text-transparent leading-tight">
+                        C++ Алгоритмдеу (1-6 Дәрістер)
+                    </h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Программалау негіздері, Тармақталу және Циклдер</p>
+                </div>
+            </div>
+
+            <!-- Header Controls -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <div class="hidden sm:flex items-center px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-medium border border-amber-200 dark:border-amber-800">
+                    <i class="fa-solid fa-star mr-1.5 text-amber-500"></i>
+                    <span> Әр сұрақ: <b>2 балл</b> (Жалпы: 100 балл)</span>
+                </div>
+
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors" title="Тақырыпты ауыстыру">
+                    <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400 text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- SCREEN 1: WELCOME & REGISTRATION -->
+        <section id="screenWelcome" class="max-w-2xl mx-auto my-8">
+            <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700 p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute -right-12 -top-12 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="text-center mb-8">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-3">
+                        <i class="fa-solid fa-book-open mr-1.5"></i> 1 - 6 Дәрістер Материалы
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        C++ Білім Тексеру Тесті
+                    </h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                        Силлабустың 1-6 дәрістері бойынша біліміңізді тексеріңіз: Программа құрылымы, Типтер, Операндтар, Тармақталу (`if`/`switch`) және Циклдер (`for`/`while`/`do-while`).
+                    </p>
+                </div>
+
+                <!-- Test Specification Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+                    <div class="p-3.5 bg-slate-50 dark:bg-slate-700/50 rounded-2xl text-center border border-slate-100 dark:border-slate-700">
+                        <i class="fa-solid fa-list-check text-brand-500 text-xl mb-1"></i>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Сұрақ саны</div>
+                        <div class="text-lg font-bold text-slate-800 dark:text-white">50 сұрақ</div>
+                    </div>
+                    <div class="p-3.5 bg-slate-50 dark:bg-slate-700/50 rounded-2xl text-center border border-slate-100 dark:border-slate-700">
+                        <i class="fa-solid fa-award text-amber-500 text-xl mb-1"></i>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Макс. балл</div>
+                        <div class="text-lg font-bold text-slate-800 dark:text-white">100 балл</div>
+                    </div>
+                    <div class="p-3.5 bg-slate-50 dark:bg-slate-700/50 rounded-2xl text-center border border-slate-100 dark:border-slate-700">
+                        <i class="fa-solid fa-bullseye text-emerald-500 text-xl mb-1"></i>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Әр сұраққа</div>
+                        <div class="text-lg font-bold text-slate-800 dark:text-white">2 балл</div>
+                    </div>
+                    <div class="p-3.5 bg-slate-50 dark:bg-slate-700/50 rounded-2xl text-center border border-slate-100 dark:border-slate-700">
+                        <i class="fa-solid fa-clock text-indigo-500 text-xl mb-1"></i>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Уақыт</div>
+                        <div class="text-lg font-bold text-slate-800 dark:text-white">50 минут</div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="startForm" onsubmit="handleStartTest(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5">
+                            Студенттің Аты-жөні <span class="text-rose-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <input type="text" id="studentName" required placeholder="Мысалы: Арман Қайратов" 
+                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 focus:bg-white dark:focus:bg-slate-800 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5">
+                                Топ / Сынып <span class="text-rose-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <i class="fa-solid fa-users absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input type="text" id="studentGroup" required placeholder="Мысалы: INF-101" 
+                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 focus:bg-white dark:focus:bg-slate-800 outline-none transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5">
+                                Таймер шегі
+                            </label>
+                            <div class="relative">
+                                <i class="fa-solid fa-hourglass-half absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <select id="testTimerSelect" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 focus:bg-white dark:focus:bg-slate-800 outline-none transition appearance-none">
+                                    <option value="50" selected>50 минут</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Options -->
+                    <div class="pt-2">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="shuffleAnswers" checked class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-brand-600 relative"></div>
+                            <span class="ml-3 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Жауап нұсқаларын араластыру</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full mt-4 py-4 px-6 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white font-bold text-base rounded-2xl shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transition duration-200 flex items-center justify-center space-x-2">
+                        <span>Тестті Бастау</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: ACTIVE TEST INTERFACE -->
+        <section id="screenTest" class="hidden space-y-6">
+            
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold">
+                        <span id="displayUserInitials">СА</span>
+                    </div>
+                    <div>
+                        <div id="displayUserName" class="font-bold text-slate-900 dark:text-white text-sm">Студент Аты</div>
+                        <div id="displayUserGroup" class="text-xs text-slate-500 dark:text-slate-400">Топ: INF-101</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
+                    <div class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold">
+                        Сұрақ: <span id="currentQuestionNum" class="text-brand-600 dark:text-brand-400 font-bold">1</span> / 50
+                    </div>
+
+                    <div id="timerContainer" class="px-3.5 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-bold flex items-center space-x-2 border border-indigo-100 dark:border-indigo-900">
+                        <i class="fa-solid fa-clock animate-pulse"></i>
+                        <span id="timerDisplay">50:00</span>
+                    </div>
+
+                    <button onclick="toggleGridModal()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-xs font-medium flex items-center space-x-1 transition">
+                        <i class="fa-solid fa-th"></i>
+                        <span class="hidden md:inline">Сұрақтар торшасы</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Global Progress Bar -->
+            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+                <div id="progressBar" class="bg-gradient-to-r from-brand-500 to-indigo-600 h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Main Test Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-8 bg-white dark:bg-slate-800 rounded-3xl shadow-md border border-slate-100 dark:border-slate-700 p-5 sm:p-8 space-y-6">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="flex-shrink-0 px-3 py-1 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 font-bold text-sm">
+                                № <span id="qIndexBadge">1</span>
+                            </span>
+                            <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                                Ұпай: <b>2 балл</b>
+                            </span>
+                        </div>
+
+                        <button id="flagBtn" onclick="toggleFlagCurrentQuestion()" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-amber-500 hover:border-amber-400 text-xs font-medium transition flex items-center space-x-1.5">
+                            <i id="flagIcon" class="fa-regular fa-bookmark"></i>
+                            <span id="flagText">Белгілеу</span>
+                        </button>
+                    </div>
+
+                    <div id="questionText" class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white leading-relaxed">
+                        Сұрақ мәтіні осы жерде шығады...
+                    </div>
+
+                    <div id="codeBlockContainer" class="hidden">
+                        <div class="rounded-2xl overflow-hidden border border-slate-700 bg-slate-950 text-slate-100 p-4 shadow-inner">
+                            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-xs text-slate-400 font-mono">
+                                <span><i class="fa-solid fa-code text-blue-400 mr-1.5"></i>main.cpp</span>
+                                <span>C++17</span>
+                            </div>
+                            <pre><code id="codeBlock" class="text-sm font-mono leading-relaxed overflow-x-auto block"></code></pre>
+                        </div>
+                    </div>
+
+                    <div id="optionsContainer" class="space-y-3 pt-2"></div>
+
+                    <div class="pt-6 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between gap-3">
+                        <button id="prevBtn" onclick="navigateQuestion(-1)" class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition disabled:opacity-40 disabled:pointer-events-none flex items-center space-x-2">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            <span>Алдыңғы</span>
+                        </button>
+
+                        <div class="flex items-center space-x-2">
+                            <button id="nextBtn" onclick="navigateQuestion(1)" class="px-6 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition flex items-center space-x-2 shadow-md shadow-brand-500/20">
+                                <span>Келесі</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                            <button id="submitTestBtn" onclick="showSubmitModal()" class="hidden px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition flex items-center space-x-2 shadow-md shadow-emerald-500/20">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Аяқтау</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block lg:col-span-4 bg-white dark:bg-slate-800 rounded-3xl shadow-md border border-slate-100 dark:border-slate-700 p-5 space-y-4 sticky top-24">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-white text-sm">Сұрақтар тізімі</h3>
+                        <span id="answeredRatioBadge" class="text-xs font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/40 px-2.5 py-1 rounded-lg">
+                            0/50 орындалды
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-3 h-3 rounded-md bg-emerald-500"></span>
+                            <span>Жауап берілген</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-3 h-3 rounded-md bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600"></span>
+                            <span>Орындалмаған</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-3 h-3 rounded-md bg-amber-400"></span>
+                            <span>Белгіленген</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-3 h-3 rounded-md ring-2 ring-brand-500 bg-brand-50"></span>
+                            <span>Ағымдағы</span>
+                        </div>
+                    </div>
+
+                    <div id="desktopQuestionGrid" class="grid grid-cols-5 gap-2 max-h-[380px] overflow-y-auto p-1"></div>
+
+                    <button onclick="showSubmitModal()" class="w-full mt-2 py-3 px-4 bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Тестті Ерте Аяқтау</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: TEST RESULTS -->
+        <section id="screenResult" class="hidden space-y-8 max-w-4xl mx-auto my-4">
+            <div class="certificate-card bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 sm:p-10 relative overflow-hidden">
+                <div class="no-print absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="text-center pb-6 border-b border-slate-100 dark:border-slate-700">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white text-2xl font-bold mb-3 shadow-lg shadow-brand-500/30">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                        Тестілеу Нәтижесі Журналы
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                        C++ Негіздері (1-6 Дәрістер бойынша)
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <div class="bg-slate-50 dark:bg-slate-700/40 rounded-2xl p-5 border border-slate-100 dark:border-slate-700 space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Студент деректері</h4>
+                        <div class="space-y-1.5">
+                            <div class="text-sm text-slate-600 dark:text-slate-300">Аты-жөні: <b id="resStudentName" class="text-slate-900 dark:text-white">--</b></div>
+                            <div class="text-sm text-slate-600 dark:text-slate-300">Тобы: <b id="resStudentGroup" class="text-slate-900 dark:text-white">--</b></div>
+                            <div class="text-sm text-slate-600 dark:text-slate-300">Тапсырылған уақыты: <b id="resDateTime" class="text-slate-900 dark:text-white">--</b></div>
+                            <div class="text-sm text-slate-600 dark:text-slate-300">Шығындалған уақыт: <b id="resTimeSpent" class="text-slate-900 dark:text-white">--</b></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-slate-900 to-brand-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Жалпы Ұпай</span>
+                            <span id="gradeBadge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500 text-white">
+                                Өте жақсы
+                            </span>
+                        </div>
+                        <div class="my-3 text-center">
+                            <div class="text-4xl sm:text-5xl font-black tracking-tight text-white">
+                                <span id="resTotalPoints">0</span> <span class="text-xl font-normal text-slate-400">/ 100</span>
+                            </div>
+                            <div class="text-xs text-brand-200 mt-1">
+                                Көрсеткіш: <span id="resPercentage" class="font-bold">0%</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-center text-xs border-t border-slate-800 pt-2 text-slate-300">
+                            <div>Дұрысы: <b id="resCorrectCount" class="text-emerald-400">0</b> / 50</div>
+                            <div>Қатесі: <b id="resIncorrectCount" class="text-rose-400">0</b> / 50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="no-print flex flex-wrap items-center justify-center gap-3 pt-2">
+                    <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm transition flex items-center space-x-2">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Нәтижені басып шығару (PDF)</span>
+                    </button>
+
+                    <button onclick="copyResultsSummary()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-semibold text-xs sm:text-sm transition flex items-center space-x-2">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Мәтінді көшіру</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modals and Toasts -->
+    <div id="gridModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-bold text-slate-900 dark:text-white text-base">Сұрақтар торшасы (1-50)</h3>
+                <button onclick="toggleGridModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 hover:text-slate-800 flex items-center justify-center">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="mobileQuestionGrid" class="grid grid-cols-5 gap-2.5 max-h-[60vh] overflow-y-auto p-1"></div>
+
+            <button onclick="toggleGridModal()" class="w-full py-3 bg-brand-600 text-white font-bold rounded-xl">
+                Жабу
+            </button>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl border border-slate-200 dark:border-slate-700">
+            <div class="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-500 flex items-center justify-center text-2xl mx-auto">
+                <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Тестті аяқтайсыз ба?</h3>
+                <p id="unansweredWarningText" class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Сізде жауап берілмеген сұрақтар бар!
+                </p>
+            </div>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="closeSubmitModal()" class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-slate-700 dark:text-slate-300 text-xs">
+                    Қайта оралу
+                </button>
+                <button onclick="finalizeTest()" class="py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-500/20">
+                    Иә, тапсыру
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-2 text-xs font-medium">
+        <i id="toastIcon" class="fa-solid fa-circle-info text-brand-400"></i>
+        <span id="toastMsg">Хабарлама</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        /* 50 Questions directly targeting Lectures 1 to 6 of C++ Course Syllabus */
+        const rawQuestionsData = [
+            /* 1-дәріс: Бағдарламалау негіздері, Синтаксис, Препроцессор, Лексемдер */
+            {
+                id: 1,
+                question: "1-дәріс: C++ тілінде жазылған бастапқы кодты (.cpp) орындалатын (.exe) модульге айналдырудың дұрыс кезеңдік реті қайсысы?",
+                code: null,
+                options: [
+                    "Препроцессор -> Компилятор (.obj) -> Құрастырғыш/Сілтеуіш (Linker) -> .exe",
+                    "Компилятор -> Препроцессор -> Интерпретатор -> .exe",
+                    "Препроцессор -> Баптаушы (Debugger) -> Орындаушы -> .exe",
+                    "Байланыс редакторы -> Компилятор -> Препроцессор -> .exe"
+                ],
+                answer: "Препроцессор -> Компилятор (.obj) -> Құрастырғыш/Сілтеуіш (Linker) -> .exe"
+            },
+            {
+                id: 2,
+                question: "1-дәріс: Препроцессордың `#include <stdio.h>` немесе `#include <iostream>` директивасының негізгі атқаратын қызметі қандай?",
+                code: "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    return 0;\n}",
+                options: [
+                    "Көрсетілген тақырыптық файлдың (.h) мазмұнын компиляция алдында бастапқы мәтінге қосады",
+                    "Операциялық жүйедегі жедел жадыны тазалайды",
+                    "Программаны бірден машиналық орындалатын кодқа түрлендіреді",
+                    "Программаны жөндеу (debugging) процесін бастайды"
+                ],
+                answer: "Көрсетілген тақырыптық файлдың (.h) мазмұнын компиляция алдында бастапқы мәтінге қосады"
+            },
+            {
+                id: 3,
+                question: "1-дәріс: C++ тілінің синтаксисінде айнымалы немесе функция атауы (идентификатор) ретінде қай сөзді қолдануға БОЛАДЫ?",
+                code: null,
+                options: [
+                    "_student_score1",
+                    "2student_score",
+                    "student-score",
+                    "float"
+                ],
+                answer: "_student_score1"
+            },
+            {
+                id: 4,
+                question: "1-дәріс: C тілінің негізін 1970-жылдары АҚШ-та қалаған ғалым және 1983 жылы С++ тілін осы негізде жасап шығарған ғалымдар кімдер?",
+                code: null,
+                options: [
+                    "Дэннис Ритчи және Бьерн Страуструп",
+                    "Гвидо ван Россум және Джеймс Гослинг",
+                    "Алан Тьюринг және Дональд Кнут",
+                    "Блез Паскаль және Чарльз Бэббидж"
+                ],
+                answer: "Дэннис Ритчи және Бьерн Страуструп"
+            },
+            {
+                id: 5,
+                question: "1-дәріс: C++ тілінің алфавиті мен идентификаторлар ережесіне сәйкес төмендегі кодта қандай синтаксистік қате туындайды?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 5;\n    A = 10;\n    cout << a;\n    return 0;\n}",
+                options: [
+                    "A айнымалысы сипатталмаған (C++ регистрге сезімтал, A мен a - екі түрлі идентификатор)",
+                    "main() функциясы тек float мән қайтаруы керек",
+                    "int a = 5 жолында нүктелі үтір қойылмаған",
+                    "Синтаксистік қате жоқ, экранға 10 шығады"
+                ],
+                answer: "A айнымалысы сипатталмаған (C++ регистрге сезімтал, A мен a - екі түрлі идентификатор)"
+            },
+            {
+                id: 6,
+                question: "1-дәріс: Тілдің ең кіші мағыналық бірлігі болып табылатын, символдардан тұратын қарапайым конструкция қалай аталады?",
+                code: null,
+                options: [
+                    "Лексем",
+                    "Басқару операторы",
+                    "Препроцессор директивасы",
+                    "Атқарылатын модуль"
+                ],
+                answer: "Лексем"
+            },
+            {
+                id: 7,
+                question: "1-дәріс: Компиляция кезеңінде синтаксистік қателер толық жөнделгеннен кейін қай файл құрастырылады?",
+                code: null,
+                options: [
+                    "Объектілік модуль (.obj)",
+                    "Бастапқы код файлы (.cpp)",
+                    "Кітапханалық файл (.lib)",
+                    "Пакеттік файл (.bat)"
+                ],
+                answer: "Объектілік модуль (.obj)"
+            },
+            {
+                id: 8,
+                question: "1-дәріс: C/C++ тілінде бірнеше жолдан тұратын түсініктемені (comments) жазудың дұрыс синтаксисі қайсысы?",
+                code: null,
+                options: [
+                    "/* бұл түсініктеме мәтіні */",
+                    "<!-- бұл түсініктеме мәтіні -->",
+                    "# бұл түсініктеме мәтіні",
+                    "REM бұл түсініктеме мәтіні"
+                ],
+                answer: "/* бұл түсініктеме мәтіні */"
+            },
+
+            /* 2-дәріс: Мәліметтер типтері, Спецификаторлар, Инкремент/Декремент, Арифметикалық амалдар */
+            {
+                id: 9,
+                question: "2-дәріс: IBM PC 32-разрядты архитектурасында C++ тілінің `sizeof(double)` операторы экранға қандай мән қайтарады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << sizeof(double);\n    return 0;\n}",
+                options: ["8", "4", "2", "10"],
+                answer: "8"
+            },
+            {
+                id: 10,
+                question: "2-дәріс: `unsigned short int` типінің компьютер жадында алатын көлемі және мәндерінің өзгеру диапазоны қандай?",
+                code: null,
+                options: [
+                    "2 байт, 0 ... 65 535",
+                    "2 байт, -32 768 ... 32 767",
+                    "4 байт, 0 ... 4 294 967 295",
+                    "1 байт, 0 ... 255"
+                ],
+                answer: "2 байт, 0 ... 65 535"
+            },
+            {
+                id: 11,
+                question: "2-дәріс: Постфикстік инкремент (`x++`) қолданылған мына C++ коды орындалған соң `x` пен `y` мәндері неге тең болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 5;\n    int y = x++;\n    cout << x << \" \" << y;\n    return 0;\n}",
+                options: [
+                    "x = 6, y = 5",
+                    "x = 6, y = 6",
+                    "x = 5, y = 5",
+                    "x = 5, y = 6"
+                ],
+                answer: "x = 6, y = 5"
+            },
+            {
+                id: 12,
+                question: "2-дәріс: Префикстік инкремент (`++x`) қолданылған мына C++ коды орындалған соң `x` пен `y` мәндері қандай болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 5;\n    int y = ++x;\n    cout << x << \" \" << y;\n    return 0;\n}",
+                options: [
+                    "x = 6, y = 6",
+                    "x = 6, y = 5",
+                    "x = 5, y = 6",
+                    "x = 5, y = 5"
+                ],
+                answer: "x = 6, y = 6"
+            },
+            {
+                id: 13,
+                question: "2-дәріс: Бүтін сандарды бөлу (`/`) және қалдық табу (`%`) амалдары орындалғанда экранға қандай екі сан шығады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 17, b = 5;\n    cout << a / b << \" \" << a % b;\n    return 0;\n}",
+                options: [
+                    "3 2",
+                    "3.4 2",
+                    "3 3",
+                    "3.4 0.4"
+                ],
+                answer: "3 2"
+            },
+            {
+                id: 14,
+                question: "2-дәріс: Құрама меншіктеу операторы `a += 5 * 2;` орындалғаннан кейін `a` айнымалысының мәні неге тең болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 10;\n    a += 5 * 2;\n    cout << a;\n    return 0;\n}",
+                options: ["20", "30", "25", "15"],
+                answer: "20"
+            },
+            {
+                id: 15,
+                question: "2-дәріс: C++ тілінде `bool` типіндегі `false` мәні бүтін сандық типіне түрлендірілгенде қай сандық мәнге эквивалентті?",
+                code: null,
+                options: ["0", "1", "-1", "Бүтін санға түрленбейді"],
+                answer: "0"
+            },
+            {
+                id: 16,
+                question: "2-дәріс: C++ тіліндегі `wchar_t` кеңейтілген символдық типінің негізгі арналған мақсаты қандай?",
+                code: null,
+                options: [
+                    "Unicode сияқты 1 байттан асатын символдар жиынын кодтау",
+                    "Тек теріс сандарды сақтау",
+                    "Жылжымалы нүктелі нақты сандарды есептеу",
+                    "Логикалық шамаларды сақтау"
+                ],
+                answer: "Unicode сияқты 1 байттан асатын символдар жиынын кодтау"
+            },
+            {
+                id: 17,
+                question: "2-дәріс: Тізбектеле жазылған `sum = a = b = 7;` меншіктеу орындалғанда операторлар қай бағытпен атқарылады?",
+                code: null,
+                options: [
+                    "Оңнан солға қарай (b=7, сосын a=b, сосын sum=a)",
+                    "Солдан оңға қарай",
+                    "Бір мезгілде параллель",
+                    "Компилятор баптауына байланысты еркін"
+                ],
+                answer: "Оңнан солға қарай (b=7, сосын a=b, сосын sum=a)"
+            },
+            {
+                id: 18,
+                question: "2-дәріс: `float` және `long int` типтерінің жадыдағы көлемі бірдей (4 байт) болғанымен, негізгі айырмашылығы неде?",
+                code: null,
+                options: [
+                    "float - мантисса мен дәрежеден тұратын нақты сан, ал long int - бүтін сан",
+                    "long int тек оң сандарды сақтайды",
+                    "float типі 2 байт орын алады",
+                    "Айырмашылығы жоқ, екеуі бірдей тип"
+                ],
+                answer: "float - мантисса мен дәрежеден тұратын нақты сан, ал long int - бүтін сан"
+            },
+            {
+                id: 19,
+                question: "2-дәріс: C++ тіліндегі `void` типі қай жағдайда қолданылмайды?",
+                code: null,
+                options: [
+                    "Стандартты сандық айнымалыны сипаттау кезінде (жады бөлу үшін)",
+                    "Мән қайтармайтын функцияларды анықтауда",
+                    "Функцияның аргументтері жоқ екенін білдіру үшін",
+                    "Типтерді келтіру операторларында"
+                ],
+                answer: "Стандартты сандық айнымалыны сипаттау кезінде (жады бөлу үшін)"
+            },
+            {
+                id: 20,
+                question: "2-дәріс: `signed char` типі сақтай алатын бүтін сандардың өзгеру диапазоны қандай?",
+                code: null,
+                options: [
+                    "-128 ... 127",
+                    "0 ... 255",
+                    "-32 768 ... 32 767",
+                    "-1 ... 1"
+                ],
+                answer: "-128 ... 127"
+            },
+
+            /* 3-4 дәрістер: Тармақталу құрылымдары, if, if-else, Ternary, Switch-case */
+            {
+                id: 21,
+                question: "3-4 дәрістер: Логикалық ЖӘНЕ (`&&`) операторының қысқаша бағалау (short-circuit) принципіне сәйкес бұл кодта `b` неге тең болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 3, b = 7;\n    bool res = (a > 5) && (++b > 5);\n    cout << b;\n    return 0;\n}",
+                options: [
+                    "7 (бірінші шарт жалған болғандықтан, ++b орындалмайды)",
+                    "8",
+                    "0",
+                    "Компиляция қатесі"
+                ],
+                answer: "7 (бірінші шарт жалған болғандықтан, ++b орындалмайды)"
+            },
+            {
+                id: 22,
+                question: "3-4 дәрістер: Тернарлық (шартты) `max = (a > b) ? a : b;` операторының дұрыс баламалы `if-else` жазылуы қайсысы?",
+                code: null,
+                options: [
+                    "if (a > b) max = a; else max = b;",
+                    "if (a < b) max = a; else max = b;",
+                    "if (a == b) max = a; else max = 0;",
+                    "while (a > b) max = a;"
+                ],
+                answer: "if (a > b) max = a; else max = b;"
+            },
+            {
+                id: 23,
+                question: "3-4 дәрістер: C++ тілінде `if (x = 0)` операторы орындалғанда шарт қалай бағаланады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 10;\n    if (x = 0) {\n        cout << \"Иә\";\n    } else {\n        cout << \"Жоқ\";\n    }\n    return 0;\n}",
+                options: [
+                    "Жалған (false), себебі меншіктеу нәтижесі 0-ге тең, экранға 'Жоқ' шығады",
+                    "Ақиқат (true), экранға 'Иә' шығады",
+                    "Синтаксистік қате береді",
+                    "Шексіз циклге түседі"
+                ],
+                answer: "Жалған (false), себебі меншіктеу нәтижесі 0-ге тең, экранға 'Жоқ' шығады"
+            },
+            {
+                id: 24,
+                question: "3-4 дәрістер: `switch` көп нұсқалы таңдау операторындағы өрнек ретінде мына типтердің қайсысын қолдануға БОЛМАЙДЫ?",
+                code: null,
+                options: [
+                    "float және double (нақты сандар)",
+                    "int (бүтін сан)",
+                    "char (символдық тип)",
+                    "bool (логикалық тип)"
+                ],
+                answer: "float және double (нақты сандар)"
+            },
+            {
+                id: 25,
+                question: "3-4 дәрістер: `switch` операторында `case` блогының соңында `break` операторы жазылмаса не болады?",
+                code: null,
+                options: [
+                    "Сәйкес келген case-тен кейінгі барлық кейстер келесі break-ке дейін тоқтаусыз орындалады",
+                    "Программа бірден тоқтап, қате шығады",
+                    "Тек default блогы орындалады",
+                    "Басқару switch операторының басына қайта оралады"
+                ],
+                answer: "Сәйкес келген case-тен кейінгі барлық кейстер келесі break-ке дейін тоқтаусыз орындалады"
+            },
+            {
+                id: 26,
+                question: "3-4 дәрістер: Төмендегі `switch` операторы орындалғанда экранға қандай нәтиже басылып шығады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 2;\n    switch(x) {\n        case 1: cout << \"A\";\n        case 2: cout << \"B\";\n        case 3: cout << \"C\"; break;\n        default: cout << \"D\";\n    }\n    return 0;\n}",
+                options: ["BC", "B", "BCD", "A"],
+                answer: "BC"
+            },
+            {
+                id: 27,
+                question: "3-4 дәрістер: Кіріктірілген тармақталуда синтаксистік ереже бойынша `else` операторы қай `if`-ке тиесілі болады?",
+                code: null,
+                options: [
+                    "Өзінің алдында тұрған, жүйелі жақшаға алынбаған ең жақын if операторына",
+                    "Ең бірінші жазылған сыртқы if операторына",
+                    "Әрқашан default блогына",
+                    "Кездейсоқ таңдалған if операторына"
+                ],
+                answer: "Өзінің алдында тұрған, жүйелі жақшаға алынбаған ең жақын if операторына"
+            },
+            {
+                id: 28,
+                question: "3-4 дәрістер: Төмендегі шартты оператор орындалғанда экранға не шығады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 10, y = 20;\n    if (x > 5 || y < 10) \n        cout << \"OK\";\n    else \n        cout << \"NO\";\n    return 0;\n}",
+                options: ["OK", "NO", "OKNO", "Ештеңе шықпайды"],
+                answer: "OK"
+            },
+            {
+                id: 29,
+                question: "3-4 дәрістер: `i = (i < n) ? i + 1 : 1;` өрнегінің атқаратын логикалық қызметі қандай?",
+                code: null,
+                options: [
+                    "i саны n-нен кіші болса i-ді 1-ге арттыру, әйтпесе i-ге 1 мәнін меншіктеу",
+                    "i-ге әрқашан n мәнін береді",
+                    "i саны n-ге тең болса 1 қайтарады",
+                    "n санын 1-ге кемітеді"
+                ],
+                answer: "i саны n-нен кіші болса i-ді 1-ге арттыру, әйтпесе i-ге 1 мәнін меншіктеу"
+            },
+            {
+                id: 30,
+                question: "3-4 дәрістер: Төмендегі кіріктірілген `if` операторлары орындалғаннан кейін экранға не шығады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 5, b = 10;\n    if (a > 0)\n        if (b < 5) cout << \"1\";\n        else cout << \"2\";\n    return 0;\n}",
+                options: ["2", "1", "12", "Ештеңе шықпайды"],
+                answer: "2"
+            },
+            {
+                id: 31,
+                question: "3-4 дәрістер: Логикалық ТЕРІСТЕУ (`!`) операторы `!(5 > 3)` өрнегіне қолданылғанда қандай мән қайтарады?",
+                code: null,
+                options: ["false (0)", "true (1)", "5", "3"],
+                answer: "false (0)"
+            },
+            {
+                id: 32,
+                question: "3-4 дәрістер: `switch` ауыстырғыш операторындағы `default` блогының негізгі қызметі қандай?",
+                code: null,
+                options: [
+                    "Өрнек мәні бірде-бір case константасымен сәйкес келмегенде орындалады",
+                    "Оператордың орындалуын мәжбүрлі түрде тоқтатады",
+                    "Бірінші case орындалмай тұрып іске қосылады",
+                    "Тек сандық мәндерді нөлге теңейді"
+                ],
+                answer: "Өрнек мәні бірде-бір case константасымен сәйкес келмегенде орындалады"
+            },
+            {
+                id: 33,
+                question: "3-4 дәрістер: Төмендегі С++ коды орындалғанда экранда қандай сөз пайда болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 3;\n    cout << ((x % 2 == 0) ? \"Жұп\" : \"Тақ\");\n    return 0;\n}",
+                options: ["Тақ", "Жұп", "3", "true"],
+                answer: "Тақ"
+            },
+            {
+                id: 34,
+                question: "3-4 дәрістер: Тармақталу тармағында (if немесе else) бірнеше операторларды біріктіріп орындау үшін не қолданылады?",
+                code: null,
+                options: [
+                    "Құрама оператор (жүйелі жақша { })",
+                    "Дөңгелек жақша ( )",
+                    "Квадрат жақша [ ]",
+                    "Нүктелі үтір ;"
+                ],
+                answer: "Құрама оператор (жүйелі жақша { })"
+            },
+            {
+                id: 35,
+                question: "3-4 дәрістер: С++ тілінде `a != b` қатынас операторы нені тексереді?",
+                code: null,
+                options: [
+                    "a мен b айнымалыларының тең еместігін",
+                    "a мен b айнымалыларының теңдігін",
+                    "a-ның b-дан үлкендігін",
+                    "a-ға b-ның мәнін меншіктеуді"
+                ],
+                answer: "a мен b айнымалыларының тең еместігін"
+            },
+
+            /* 5-6 дәрістер: Циклдік операторлар (while, do-while, for), break, continue, алгоритмдер */
+            {
+                id: 36,
+                question: "5-6 дәрістер: Алғы шартты `while` циклінің соңғы шартты `do-while` циклінен басты айырмашылығы неде?",
+                code: null,
+                options: [
+                    "while циклінің шарты жалған болса 0 рет орындалуы мүмкін, ал do-while кем дегенде 1 рет орындалады",
+                    "do-while циклі тек оң сандармен жұмыс істейді",
+                    "while циклінде шарт тексерілмейді",
+                    "do-while циклінде параметрді арттыруға болмайды"
+                ],
+                answer: "while циклінің шарты жалған болса 0 рет орындалуы мүмкін, ал do-while кем дегенде 1 рет орындалады"
+            },
+            {
+                id: 37,
+                question: "5-6 дәрістер: Төменде берілген `for` циклі қанша рет кайталанады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 0; i < 10; i += 2) {\n        cout << i << \" \";\n    }\n    return 0;\n}",
+                options: ["5 рет", "10 рет", "4 рет", "6 рет"],
+                answer: "5 рет"
+            },
+            {
+                id: 38,
+                question: "5-6 дәрістер: 1-ден n-ге дейінгі сандардың факториалын (n!) есептеуде `for` циклінің ішінде қай өрнек қолданылады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int p = 1, n = 5;\n    for (int i = 1; i <= n; i++) {\n        p *= i;\n    }\n    cout << p;\n    return 0;\n}",
+                options: ["p *= i;", "p += i;", "p = i + 1;", "p /= i;"],
+                answer: "p *= i;"
+            },
+            {
+                id: 39,
+                question: "5-6 дәрістер: Цикл денесінде `continue` операторы орындалғанда қандай әрекет орын алады?",
+                code: null,
+                options: [
+                    "Циклдің қалған операторларын аттап өтіп, келесі итерацияға (қадамға) көшеді",
+                    "Циклді толығымен тоқтатып, одан шығады",
+                    "Программаны қайта іске қосады",
+                    "Ағымдағы айнымалыны нөлге теңестіреді"
+                ],
+                answer: "Циклдің қалған операторларын аттап өтіп, келесі итерацияға (қадамға) көшеді"
+            },
+            {
+                id: 40,
+                question: "5-6 дәрістер: Цикл денесінде `break` операторы орындалғанда не болады?",
+                code: null,
+                options: [
+                    "Циклдің орындалуын бірден тоқтатып, одан шығады",
+                    "Келесі итерацияға көшеді",
+                    "Циклді басынан қайта бастайды",
+                    "Шартты тексеруді өткізіп жібереді"
+                ],
+                answer: "Циклдің орындалуын бірден тоқтатып, одан шығады"
+            },
+            {
+                id: 41,
+                question: "5-6 дәрістер: Төмендегі `while` циклі орындалғаннан кейін `s` айнымалысының мәні неге тең болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int s = 0, k = 1;\n    while (k <= 4) {\n        s += k;\n        k++;\n    }\n    cout << s;\n    return 0;\n}",
+                options: ["10", "4", "5", "15"],
+                answer: "10"
+            },
+            {
+                id: 42,
+                question: "5-6 дәрістер: Төмендегі `do-while` циклі орындалғанда экранға қандай мән басылып шығады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = 5;\n    do {\n        cout << x;\n        x++;\n    } while (x < 5);\n    return 0;\n}",
+                options: ["5", "Ештеңе шықпайды", "56789", "0"],
+                answer: "5"
+            },
+            {
+                id: 43,
+                question: "5-6 дәрістер: C++ тілінде шексіз цикл (infinite loop) ұйымдастыру үшін `while` шартына не жазуға болады?",
+                code: null,
+                options: [
+                    "while (true) немесе while (1)",
+                    "while (false)",
+                    "while (0)",
+                    "while (null)"
+                ],
+                answer: "while (true) немесе while (1)"
+            },
+            {
+                id: 44,
+                question: "5-6 дәрістер: Кері бағытта санайтын мына `for` циклі орындалған соң `p` мәні неге тең болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int p = 1;\n    for (int i = 3; i >= 1; i--) {\n        p *= i;\n    }\n    cout << p;\n    return 0;\n}",
+                options: ["6", "3", "1", "0"],
+                answer: "6"
+            },
+            {
+                id: 45,
+                question: "5-6 дәрістер: Екі қабатталған (ішкі) циклде сыртқы цикл 3 рет, ал ішкі цикл 4 рет қайталанса, ішкі цикл денесі барлығы қанша рет орындалады?",
+                code: null,
+                options: ["12 рет", "7 рет", "4 рет", "3 рет"],
+                answer: "12 рет"
+            },
+            {
+                id: 46,
+                question: "5-6 дәрістер: `continue` операторы бар мына циклде `cout` функциясы қанша рет орындалады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 0; i < 5; i++) {\n        if (i == 2) continue;\n        cout << i << \" \";\n    }\n    return 0;\n}",
+                options: ["4 рет (0 1 3 4)", "5 рет (0 1 2 3 4)", "2 рет", "3 рет"],
+                answer: "4 рет (0 1 3 4)"
+            },
+            {
+                id: 47,
+                question: "5-6 дәрістер: Параметрлі `for (x = x0; x <= xk; x += dx)` циклінде бастапқы `x = x0` беру өрнегі қанша рет есептеледі?",
+                code: null,
+                options: [
+                    "Цикл операторы басталғанда тек 1 рет",
+                    "Әрбір итерация сайын кайталанады",
+                    "Цикл аяқталғанда 1 рет",
+                    "x <= xk шарты орындалған сайын"
+                ],
+                answer: "Цикл операторы басталғанда тек 1 рет"
+            },
+            {
+                id: 48,
+                question: "5-6 дәрістер: Берілген сандық айнымалының цифрларының қосындысын табатын алгоритмде `while (n > 0)` циклінің ішінде қай екі амал қолданылады?",
+                code: null,
+                options: [
+                    "s += n % 10; n /= 10;",
+                    "s += n / 10; n %= 10;",
+                    "s *= n; n--;",
+                    "s += n; n -= 2;"
+                ],
+                answer: "s += n % 10; n /= 10;"
+            },
+            {
+                id: 49,
+                question: "5-6 дәрістер: Төмендегі цикл толық аяқталғаннан кейін `i` айнымалысының соңғы мәні неге тең болады?",
+                code: "#include <iostream>\nusing namespace std;\n\nint main() {\n    int i;\n    for (i = 0; i < 5; i++) {\n        // бос дене\n    }\n    cout << i;\n    return 0;\n}",
+                options: ["5", "4", "0", "6"],
+                answer: "5"
+            },
+            {
+                id: 50,
+                question: "5-6 дәрістер: 1-ден N-ге дейінгі тек жұп сандардың қосындысын табу үшін `for` циклінің параметрлерін қалай берген тиімді?",
+                code: null,
+                options: [
+                    "for (int i = 2; i <= N; i += 2)",
+                    "for (int i = 1; i <= N; i++)",
+                    "for (int i = 0; i <= N; i += 3)",
+                    "for (int i = N; i >= 1; i--)"
+                ],
+                answer: "for (int i = 2; i <= N; i += 2)"
+            }
+        ];
+
+        let testQuestions = [];
+        let userAnswers = {};
+        let flaggedQuestions = new Set();
+        let currentQuestionIndex = 0;
+        let studentInfo = { name: '', group: '' };
+        
+        let timerInterval = null;
+        let totalSeconds = 0;
+        let elapsedSeconds = 0;
+
+        function normalizeStr(str) {
+            if (str === null || str === undefined) return '';
+            return String(str).replace(/[\u00A0\s]+/g, ' ').trim();
+        }
+
+        /* Single-Attempt Enforcement Check on DOM Load */
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedResult = localStorage.getItem('cpp_test_submitted_data_l1_6');
+            if (savedResult) {
+                const data = JSON.parse(savedResult);
+                showSavedResults(data);
+            }
+        });
+
+        function showSavedResults(data) {
+            document.getElementById('resStudentName').textContent = data.name;
+            document.getElementById('resStudentGroup').textContent = data.group;
+            document.getElementById('resDateTime').textContent = data.dateTime;
+            document.getElementById('resTimeSpent').textContent = data.timeSpent;
+            document.getElementById('resTotalPoints').textContent = data.totalScore;
+            document.getElementById('resPercentage').textContent = `${data.percentage}%`;
+            document.getElementById('resCorrectCount').textContent = data.correctCount;
+            document.getElementById('resIncorrectCount').textContent = data.incorrectCount;
+
+            const badge = document.getElementById('gradeBadge');
+            if (data.totalScore >= 90) {
+                badge.textContent = "Өте жақсы (5)";
+                badge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-emerald-500 text-white shadow-md shadow-emerald-500/30";
+            } else if (data.totalScore >= 75) {
+                badge.textContent = "Жақсы (4)";
+                badge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-brand-500 text-white shadow-md shadow-brand-500/30";
+            } else if (data.totalScore >= 50) {
+                badge.textContent = "Қанағаттанарлық (3)";
+                badge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-amber-500 text-white shadow-md shadow-amber-500/30";
+            } else {
+                badge.textContent = "Қанағаттанарлықсыз (2)";
+                badge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-rose-500 text-white shadow-md shadow-rose-500/30";
+            }
+
+            document.getElementById('screenWelcome').classList.add('hidden');
+            document.getElementById('screenTest').classList.add('hidden');
+            document.getElementById('screenResult').classList.remove('hidden');
+
+            showToast("Сіз бұл тестті бұрын тапсырғансыз!", "fa-lock", "text-amber-400");
+        }
+
+        /* Theme Toggle */
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        /* Start Test Handler */
+        function handleStartTest(e) {
+            e.preventDefault();
+
+            if (localStorage.getItem('cpp_test_submitted_data_l1_6')) {
+                alert("Сіз бұл тестті бұрын тапсырғансыз! Қайта тапсыруға рұқсат жоқ.");
+                return;
+            }
+
+            const nameInput = document.getElementById('studentName').value.trim();
+            const groupInput = document.getElementById('studentGroup').value.trim();
+            const timerVal = 50; // Fixed 50 minutes
+            const shuffleFlag = document.getElementById('shuffleAnswers').checked;
+
+            if (!nameInput || !groupInput) {
+                showToast("Аты-жөніңіз бен тобыңызды толтырыңыз!", "fa-circle-exclamation", "text-amber-400");
+                return;
+            }
+
+            studentInfo.name = nameInput;
+            studentInfo.group = groupInput;
+
+            testQuestions = JSON.parse(JSON.stringify(rawQuestionsData));
+
+            if (shuffleFlag) {
+                testQuestions.forEach(q => {
+                    q.options = shuffleArray([...q.options]);
+                });
+            }
+
+            userAnswers = {};
+            flaggedQuestions.clear();
+            currentQuestionIndex = 0;
+            elapsedSeconds = 0;
+
+            document.getElementById('displayUserName').textContent = studentInfo.name;
+            document.getElementById('displayUserGroup').textContent = `Топ: ${studentInfo.group}`;
+            
+            const nameParts = studentInfo.name.split(' ');
+            let initials = nameParts[0].charAt(0).toUpperCase();
+            if (nameParts.length > 1) initials += nameParts[1].charAt(0).toUpperCase();
+            document.getElementById('displayUserInitials').textContent = initials;
+
+            totalSeconds = timerVal * 60;
+            document.getElementById('timerContainer').classList.remove('hidden');
+            startTimer();
+
+            document.getElementById('screenWelcome').classList.add('hidden');
+            document.getElementById('screenTest').classList.remove('hidden');
+
+            renderCurrentQuestion();
+            renderQuestionGrids();
+            showToast("Тест басталды! Сәттілік!", "fa-circle-check", "text-emerald-400");
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        /* Timer Control */
+        function startTimer() {
+            clearInterval(timerInterval);
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                elapsedSeconds++;
+                if (totalSeconds > 0) {
+                    const remaining = totalSeconds - elapsedSeconds;
+                    if (remaining <= 0) {
+                        clearInterval(timerInterval);
+                        showToast("Уақыт аяқталды! Тест авто-жіберіледі.", "fa-clock", "text-rose-400");
+                        finalizeTest();
+                        return;
+                    }
+                }
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            if (totalSeconds === 0) return;
+            const remaining = Math.max(0, totalSeconds - elapsedSeconds);
+            const m = Math.floor(remaining / 60).toString().padStart(2, '0');
+            const s = (remaining % 60).toString().padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+        }
+
+        /* Navigation & Rendering */
+        function renderCurrentQuestion() {
+            const q = testQuestions[currentQuestionIndex];
+            
+            document.getElementById('currentQuestionNum').textContent = currentQuestionIndex + 1;
+            document.getElementById('qIndexBadge').textContent = currentQuestionIndex + 1;
+            document.getElementById('questionText').textContent = `${q.id}. ${q.question}`;
+
+            const codeBoxContainer = document.getElementById('codeBlockContainer');
+            const codeBlock = document.getElementById('codeBlock');
+            if (q.code) {
+                codeBoxContainer.classList.remove('hidden');
+                codeBlock.innerHTML = formatCppSyntax(q.code);
+            } else {
+                codeBoxContainer.classList.add('hidden');
+            }
+
+            updateFlagUI();
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            const userPick = userAnswers[q.id];
+            const isAnswered = userPick !== undefined;
+
+            q.options.forEach((optText, idx) => {
+                const isUserSelected = isAnswered && normalizeStr(userPick) === normalizeStr(optText);
+
+                let optBtnClass = "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-700/30 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700";
+                let badgeClass = "bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300";
+                let statusBadgeHtml = "";
+
+                if (isUserSelected) {
+                    optBtnClass = "border-brand-500 bg-brand-50/60 dark:bg-brand-900/30 text-slate-900 dark:text-white shadow-sm ring-2 ring-brand-500/20";
+                    badgeClass = "bg-brand-600 text-white";
+                    statusBadgeHtml = `<div class="w-5 h-5 rounded-full bg-brand-600 text-white flex items-center justify-center"><i class="fa-solid fa-check text-[10px]"></i></div>`;
+                }
+
+                const optBtn = document.createElement('button');
+                optBtn.type = 'button';
+                optBtn.onclick = () => selectOption(q.id, optText);
+                optBtn.className = `w-full p-4 rounded-2xl border text-left transition-all duration-150 flex items-center justify-between group ${optBtnClass}`;
+
+                optBtn.innerHTML = `
+                    <div class="flex items-center space-x-3.5">
+                        <span class="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs ${badgeClass}">
+                            ${optionLetters[idx]}
+                        </span>
+                        <span class="text-sm font-medium leading-snug">${escapeHtml(optText)}</span>
+                    </div>
+                    ${statusBadgeHtml}
+                `;
+                optionsContainer.appendChild(optBtn);
+            });
+
+            const answeredCount = Object.keys(userAnswers).length;
+            const progressPct = (answeredCount / testQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progressPct}%`;
+            document.getElementById('answeredRatioBadge').textContent = `${answeredCount}/50 орындалды`;
+
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+
+            const isLast = currentQuestionIndex === testQuestions.length - 1;
+            if (isLast) {
+                document.getElementById('nextBtn').classList.add('hidden');
+                document.getElementById('submitTestBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('nextBtn').classList.remove('hidden');
+                document.getElementById('submitTestBtn').classList.add('hidden');
+            }
+
+            renderQuestionGrids();
+        }
+
+        function selectOption(questionId, optionValue) {
+            userAnswers[questionId] = optionValue;
+            renderCurrentQuestion();
+        }
+
+        function navigateQuestion(dir) {
+            const newIdx = currentQuestionIndex + dir;
+            if (newIdx >= 0 && newIdx < testQuestions.length) {
+                currentQuestionIndex = newIdx;
+                renderCurrentQuestion();
+            }
+        }
+
+        function goToQuestion(idx) {
+            if (idx >= 0 && idx < testQuestions.length) {
+                currentQuestionIndex = idx;
+                renderCurrentQuestion();
+                document.getElementById('gridModal').classList.add('hidden');
+            }
+        }
+
+        function toggleFlagCurrentQuestion() {
+            const q = testQuestions[currentQuestionIndex];
+            if (flaggedQuestions.has(q.id)) {
+                flaggedQuestions.delete(q.id);
+                showToast("Белгілеу алынып тасталды", "fa-bookmark", "text-slate-400");
+            } else {
+                flaggedQuestions.add(q.id);
+                showToast("Сұрақ қайта қарау үшін белгіленді", "fa-bookmark", "text-amber-400");
+            }
+            updateFlagUI();
+            renderQuestionGrids();
+        }
+
+        function updateFlagUI() {
+            const q = testQuestions[currentQuestionIndex];
+            const flagBtn = document.getElementById('flagBtn');
+            const flagIcon = document.getElementById('flagIcon');
+            const flagText = document.getElementById('flagText');
+
+            if (flaggedQuestions.has(q.id)) {
+                flagBtn.className = "px-3 py-1.5 rounded-xl border border-amber-400 bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 text-xs font-medium transition flex items-center space-x-1.5";
+                flagIcon.className = "fa-solid fa-bookmark text-amber-500";
+                flagText.textContent = "Белгіленген";
+            } else {
+                flagBtn.className = "px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-amber-500 hover:border-amber-400 text-xs font-medium transition flex items-center space-x-1.5";
+                flagIcon.className = "fa-regular fa-bookmark";
+                flagText.textContent = "Белгілеу";
+            }
+        }
+
+        function renderQuestionGrids() {
+            const desktopGrid = document.getElementById('desktopQuestionGrid');
+            const mobileGrid = document.getElementById('mobileQuestionGrid');
+
+            if (!desktopGrid || !mobileGrid) return;
+
+            let desktopHtml = '';
+            let mobileHtml = '';
+
+            testQuestions.forEach((q, idx) => {
+                const isCurrent = idx === currentQuestionIndex;
+                const isAnswered = userAnswers[q.id] !== undefined;
+                const isFlagged = flaggedQuestions.has(q.id);
+
+                let btnBg = "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600";
+                if (isAnswered) {
+                    btnBg = "bg-emerald-500 text-white font-bold hover:bg-emerald-600";
+                }
+                if (isFlagged && !isAnswered) {
+                    btnBg = "bg-amber-400 text-amber-950 font-bold hover:bg-amber-500";
+                }
+
+                let ringClass = isCurrent ? "ring-2 ring-offset-2 ring-brand-500 font-extrabold scale-105 z-10" : "";
+
+                const btnMarkup = `
+                    <button onclick="goToQuestion(${idx})" class="h-9 rounded-xl text-xs flex items-center justify-center transition-all ${btnBg} ${ringClass}">
+                        ${idx + 1}
+                    </button>
+                `;
+
+                desktopHtml += btnMarkup;
+                mobileHtml += btnMarkup;
+            });
+
+            desktopGrid.innerHTML = desktopHtml;
+            mobileGrid.innerHTML = mobileHtml;
+        }
+
+        function toggleGridModal() {
+            const modal = document.getElementById('gridModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function showSubmitModal() {
+            const unansweredCount = testQuestions.length - Object.keys(userAnswers).length;
+            const warningText = document.getElementById('unansweredWarningText');
+
+            if (unansweredCount > 0) {
+                warningText.textContent = `Назар аударыңыз! Сізде ${unansweredCount} жауап берілмеген сұрақ бар.`;
+                warningText.className = "text-xs text-rose-500 dark:text-rose-400 font-semibold mt-1";
+            } else {
+                warningText.textContent = "Барлық сұрақтарға жауап берілді! Тестті аяқтауға дайынсыз.";
+                warningText.className = "text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1";
+            }
+
+            document.getElementById('confirmModal').classList.remove('hidden');
+        }
+
+        function closeSubmitModal() {
+            document.getElementById('confirmModal').classList.add('hidden');
+        }
+
+        function formatCppSyntax(code) {
+            let escaped = escapeHtml(code);
+            
+            // Highlight Preprocessors (#include <...>)
+            escaped = escaped.replace(/(#include\s+&lt;.*?&gt;)/g, '<span class="cpp-pp">$1</span>');
+
+            // Highlight Strings
+            escaped = escaped.replace(/(("(.*?)")|('(.*?)'))/g, '<span class="cpp-str">$1</span>');
+            
+            // C++ Keywords
+            const keywords = ['int', 'double', 'float', 'char', 'bool', 'void', 'return', 'if', 'else', 'for', 'while', 'do', 'break', 'continue', 'switch', 'case', 'default', 'const', 'short', 'long', 'signed', 'unsigned', 'sizeof', 'using', 'namespace', 'std'];
+            keywords.forEach(kw => {
+                const reg = new RegExp(`\\b${kw}\\b`, 'g');
+                escaped = escaped.replace(reg, `<span class="cpp-kw">${kw}</span>`);
+            });
+
+            // Standard functions & streams
+            const fns = ['cout', 'cin', 'endl', 'sqrt', 'pow', 'ceil', 'floor', 'abs', 'max', 'min'];
+            fns.forEach(fn => {
+                const reg = new RegExp(`\\b${fn}\\b`, 'g');
+                escaped = escaped.replace(reg, `<span class="cpp-fn">${fn}</span>`);
+            });
+
+            return escapeHtmlNumbers(escaped);
+        }
+
+        function escapeHtmlNumbers(str) {
+            return str.replace(/\b(\d+(\.\d+)?)\b/g, '<span class="cpp-num">$1</span>');
+        }
+
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function finalizeTest() {
+            clearInterval(timerInterval);
+            closeSubmitModal();
+
+            let correctCount = 0;
+            testQuestions.forEach(q => {
+                const userAns = userAnswers[q.id];
+                if (userAns !== undefined && normalizeStr(userAns) === normalizeStr(q.answer)) {
+                    correctCount++;
+                }
+            });
+
+            const totalScore = correctCount * 2;
+            const incorrectCount = testQuestions.length - correctCount;
+            const percentage = Math.round((correctCount / testQuestions.length) * 100);
+            const now = new Date();
+            const mins = Math.floor(elapsedSeconds / 60);
+            const secs = elapsedSeconds % 60;
+            const timeSpentStr = `${mins} мин ${secs} сек`;
+
+            const finalData = {
+                name: studentInfo.name,
+                group: studentInfo.group,
+                dateTime: now.toLocaleString('kk-KZ'),
+                timeSpent: timeSpentStr,
+                totalScore: totalScore,
+                percentage: percentage,
+                correctCount: correctCount,
+                incorrectCount: incorrectCount
+            };
+
+            // Save attempt to localStorage (Single Attempt lock for 1-6 lectures)
+            localStorage.setItem('cpp_test_submitted_data_l1_6', JSON.stringify(finalData));
+
+            showSavedResults(finalData);
+            showToast("Тест нәтижесі толық есептелді!", "fa-circle-check", "text-emerald-400");
+        }
+
+        function copyResultsSummary() {
+            const name = document.getElementById('resStudentName').textContent;
+            const group = document.getElementById('resStudentGroup').textContent;
+            const score = document.getElementById('resTotalPoints').textContent;
+            const correct = document.getElementById('resCorrectCount').textContent;
+
+            const text = `[C++ Тест Нәтижесі (1-6 Дәрістер)]\nСтудент: ${name}\nТоп: ${group}\nЖиналған балл: ${score} / 100\nДұрыс жауаптар: ${correct} / 50`;
+
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showToast("Нәтиже алмасу буферіне көшірілді!", "fa-copy", "text-brand-400");
+        }
+
+        function showToast(msg, iconClass = "fa-circle-info", iconColor = "text-brand-400") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.textContent = msg;
+            toastIcon.className = `fa-solid ${iconClass} ${iconColor}`;
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
